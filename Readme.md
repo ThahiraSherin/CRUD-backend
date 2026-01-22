@@ -1,11 +1,10 @@
 🚀 Lead Management System – Backend
 📌 Project Description
 
-This is the backend service for a Lead Management System built for managing customer leads efficiently.
-It provides secure REST APIs for creating, updating, deleting, and viewing leads.
-Authentication is handled using JWT, ensuring secure access for authorized users.
+This backend application is built for a Lead Management System that allows authenticated users to manage leads efficiently.
+It provides secure REST APIs using JWT authentication and follows a modular MVC-style structure for maintainability and scalability.
 
-This backend is designed to be scalable and easily integrable with any frontend application.
+The backend is designed to integrate seamlessly with a React frontend.
 
 🛠 Tech Stack
 
@@ -17,84 +16,133 @@ MongoDB
 
 Mongoose
 
-JWT Authentication
+JWT (JSON Web Token)
 
 bcrypt
 
-Axios (for API testing)
-
-Postman
+dotenv
 
 ✨ Features
 
-User Authentication (Login / Logout)
+User authentication (Login)
 
-JWT-based Authorization
+JWT-based route protection
 
-Create, Read, Update, Delete (CRUD) Leads
+Create, Read, Update, Delete (CRUD) leads
 
-Secure protected routes
+Secure middleware for protected routes
 
-RESTful API structure
+Clean and modular folder structure
 
-MongoDB data persistence
+MongoDB database integration
 
 📂 Project Structure
 CRUD-backend/
 │
 ├── controllers/
+│   ├── authController.js
 │   └── leadController.js
-│
-├── models/
-│   └── Lead.js
-│
-├── routes/
-│   └── leadRoutes.js
 │
 ├── middleware/
 │   └── authMiddleware.js
 │
-├── config/
-│   └── db.js
+├── models/
+│   ├── Lead.js
+│   └── User.js
 │
-├── server.js
+├── routes/
+│   ├── authRoutes.js
+│   └── leadRoutes.js
+│
+├── utils/
+│   └── config.js
+│
+├── .env
+├── .gitignore
+├── app.js
 ├── package.json
-└── .env
+└── package-lock.json
+|__Readme.md
+|__server.js
 
-⚙️ Environment Variables (.env)
+⚙️ Environment Variables
+
+Create a .env file in the root directory and add the following values:
+
 PORT=3001
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+MONGO_URI= mongodb+srv://thahirasherinbeauty225:Jinjuma09@cluster0.ryo0jx9.mongodb.net/CRUD
+JWT_SECRET=your_jwt_secret
 
-▶️ How to Run the Backend
+▶️ Setup & Installation
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/CRUD-backend.git
+cd CRUD-backend
+
+2️⃣ Install Dependencies
 npm install
+
+3️⃣ Configure Environment Variables
+
+Create a .env file
+
+Add MongoDB URI and JWT secret
+npm install mongoose
+npm install jsonwebtoken
+
+Add development dependencies
+npm install express
+
+4️⃣ Start the Server
+npm start
+npm install nodemon -D
+
 npm run dev
 
-
-Server will run on:
-
+5️⃣ Server Runs At
 http://localhost:3001
 
 🔗 API Endpoints
-🔐 Auth
+🔐 Authentication Routes
 Method	Endpoint	Description
-POST	/api/auth/login	Login user
-📋 Leads
+POST   /api/auth/register User register
+POST	/api/auth/login	User login
+📋 Lead Routes (Protected)
 Method	Endpoint	Description
 GET	/api/leads	Get all leads
-POST	/api/leads	Create a lead
+POST	/api/leads	Create a new lead
 PUT	/api/leads/:id	Update a lead
 DELETE	/api/leads/:id	Delete a lead
+🔑 Authorization
+
+All lead routes are protected using JWT.
+
+Add the token in request headers:
+
+Authorization: Bearer <your_token>
+
+🧠 How It Works (Brief)
+
+authController.js handles user authentication
+
+authMiddleware.js verifies JWT tokens
+
+leadController.js manages lead CRUD logic
+
+routes define API endpoints
+
+models define MongoDB schemas
+
+utils/config.js handles DB connection
+
 🧪 Testing
 
 APIs tested using Postman
 
-Authorization token passed in headers
+JWT token verified through middleware
 
-Authorization: Bearer <token>
+All CRUD operations validated
 
 👩‍💻 Author
 
 Thahira Sherin
 MERN Stack Developer
-
