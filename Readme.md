@@ -45,7 +45,8 @@ CRUD-backend/
 │
 ├── middleware/
 │   └── authMiddleware.js
-│
+|   │__ errorMiddleware.js
+|
 ├── models/
 │   ├── Lead.js
 │   └── User.js
@@ -146,4 +147,5 @@ All CRUD operations validated
 
 Thahira Sherin
 MERN Stack Developer
+
 
